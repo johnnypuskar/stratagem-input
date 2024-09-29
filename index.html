@@ -56,27 +56,17 @@
 <body>
 
     <div class="grid-container">
-        <button onclick="playSound(0)">✔</button>
-        <button onclick="playSound(1)">↑</button>
-        <button onclick="playSound(2)">X</button>
-        <button onclick="playSound(3)">←</button>
-        <button onclick="playSound(4)">↓</button>
-        <button onclick="playSound(5)">→</button>
+        <button onclick="playSound('success.mp3')">✔</button>
+        <button onclick="playSound('press.mp3')">↑</button>
+        <button onclick="playSound('fail.mp3')">X</button>
+        <button onclick="playSound('press.mp3')">←</button>
+        <button onclick="playSound('press.mp3')">↓</button>
+        <button onclick="playSound('press.mp3')">→</button>
     </div>
 
     <script>
-		var audioFiles = [
-			new Audio('success.mp3'),
-			new Audio('press.mp3'),
-			new Audio('fail.mp3'),
-			new Audio('press.mp3'),
-			new Audio('press.mp3'),
-			new Audio('press.mp3'),
-		];
-	
-        function playSound(index) {
-            var audio = audioFiles[index];
-			audio.currentTime = 0.0;
+        function playSound(soundFile) {
+            var audio = new Audio(soundFile);
             audio.play();
         }
     </script>
