@@ -54,10 +54,6 @@
     </style>
 </head>
 <body>
-    <audio src="success.mp3" preload="auto"></audio>
-    <audio src="press.mp3" preload="auto"></audio>
-    <audio src="fail.mp3" preload="auto"></audio>
-
     <div class="grid-container">
         <button onclick="playSound('success.mp3')">✔</button>
         <button onclick="playSound('press.mp3')">↑</button>
@@ -68,11 +64,8 @@
     </div>
 
     <script>
-        var audioFiles = document.querySelectorAll("audio");
-	
         function playSound(src) {
-            var audio = Array.from(audioFiles).find(audio => audio.src.includes(src));
-            audio.currentTime = 0;
+            var audio = new Audio(src);
             audio.play();
         }
     </script>
