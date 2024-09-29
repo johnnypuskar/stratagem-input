@@ -53,19 +53,29 @@
 <body>
 
     <div class="grid-container">
-        <button onclick="playSound('success.mp3')">✔</button>
-        <button onclick="playSound('press.mp3')">↑</button>
-        <button onclick="playSound('fail.mp3')">X</button>
-        <button onclick="playSound('press.mp3')">←</button>
-        <button onclick="playSound('press.mp3')">↓</button>
-        <button onclick="playSound('press.mp3')">→</button>
+        <button onclick="playSound('success')">✔</button>
+        <button onclick="playSound('press')">↑</button>
+        <button onclick="playSound('fail')">X</button>
+        <button onclick="playSound('press')">←</button>
+        <button onclick="playSound('press')">↓</button>
+        <button onclick="playSound('press')">→</button>
     </div>
 
     <script>
+        // Preload audio files
+        const sounds = {
+            success: new Audio('success.mp3'),
+            fail: new Audio('fail.mp3'),
+            press: new Audio('press.mp3')
+        };
+
+        // Function to play sound
         function playSound(soundFile) {
-            // Create a new Audio object with the passed sound file and play it
-            var audio = new Audio(soundFile);
-            audio.play();
+            // Play the appropriate sound based on the button pressed
+            if (sounds[soundFile]) {
+                sounds[soundFile].currentTime = 0; // Reset to the start
+                sounds[soundFile].play(); // Play sound
+            }
         }
     </script>
 
