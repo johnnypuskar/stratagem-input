@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3x2 Grid of Buttons</title>
+    <style>
+        /* Dark mode styles */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* Default text color */
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: calc(100vh / 2 * 3); /* 3 columns */
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Button styles */
+        .grid-container button {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Keep buttons square */
+            font-size: 5vw; /* Responsive font size */
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1e1e1e; /* Dark button background */
+            color: #FFD700; /* Yellow text */
+            border: 2px solid #FFD700; /* Yellow border */
+            border-radius: 8px; /* Rounded corners */
+            transition: background-color 0.3s; /* Transition effect */
+        }
+
+        /* Button hover effect */
+        .grid-container button:hover {
+            background-color: #3a3a3a; /* Lighter background on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-container">
+        <button onclick="playSound('success.mp3')">✔</button>
+        <button onclick="playSound('press.mp3')">↑</button>
+        <button onclick="playSound('fail.mp3')">X</button>
+        <button onclick="playSound('press.mp3')">←</button>
+        <button onclick="playSound('press.mp3')">↓</button>
+        <button onclick="playSound('press.mp3')">→</button>
+    </div>
+
+    <script>
+        function playSound(soundFile) {
+            // Create a new Audio object with the passed sound file and play it
+            var audio = new Audio(soundFile);
+            audio.play();
+        }
+    </script>
+
+</body>
+</html>
