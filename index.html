@@ -55,18 +55,48 @@
 </head>
 <body>
     <div class="grid-container">
-        <button onclick="playSound('success.mp3')">✔</button>
-        <button onclick="playSound('press.mp3')">↑</button>
-        <button onclick="playSound('fail.mp3')">X</button>
-        <button onclick="playSound('press.mp3')">←</button>
-        <button onclick="playSound('press.mp3')">↓</button>
-        <button onclick="playSound('press.mp3')">→</button>
+        <button onclick="playSound(0)">✔</button>
+        <button onclick="playSound(1)">↑</button>
+        <button onclick="playSound(2)">X</button>
+        <button onclick="playSound(3)">←</button>
+        <button onclick="playSound(4)">↓</button>
+        <button onclick="playSound(5)">→</button>
     </div>
 
     <script>
-        function playSound(src) {
-            var audio = new Audio(src);
-            audio.play();
+        var audioFiles = [
+            new Audio('success.mp3'),
+            new Audio('press.mp3'),
+            new Audio('fail.mp3'),
+            new Audio('press.mp3'),
+            new Audio('press.mp3'),
+            new Audio('press.mp3')
+        ];
+
+        var initialized = false;
+        function initializeAudio() {
+            initialized = true;
+
+            audioFiles.forEach(audio => {
+                audio.loop = true;
+                audio.volume = 0.0;
+                audio.play();
+            });
+        }
+
+        function playSound(index) {
+            if (!initialized) {
+                initializeAudio();
+            }
+            var audio = audioFiles[index];
+            audio.currentTime = 0.0;
+            audio.volume = 1.0;
+            audio.loop = false;
+            audio.addEventListener("ended", function() {
+                audio.volume = 0.0;
+                audio.loop = true;
+                audio.play();
+            });
         }
     </script>
 
